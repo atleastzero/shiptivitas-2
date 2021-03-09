@@ -2,7 +2,9 @@ import express from 'express';
 import Database from 'better-sqlite3';
 
 const app = express();
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -122,12 +124,58 @@ app.put('/api/v1/clients/:id', (req, res) => {
   }
 
   let { status, priority } = req.body;
+  priority = parseInt(priority);
   let clients = db.prepare('select * from clients').all();
   const client = clients.find(client => client.id === id);
 
   /* ---------- Update code below ----------*/
+  const prevStatus = client.status;
+  const prevPriority = client.priority;
 
+  if (status) {
+    client.status = status;
+    const stmt = db.prepare('UPDATE clients SET status = ? WHERE id = ?');
+    stmt.run(client.status, client.id);
+  }
 
+  clients = db.prepare('select * from clients').all();
+
+  const validator = validatePriority(priority);
+  const validPrio = validator.valid
+  if (!validPrio) {
+    if (prevStatus === client.status) {
+      let counter = 0;
+      for (let i=0; i<clients.length; i++) {
+        if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i].id!==client.id) {
+          clients[i].priority -= 1;
+          const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
+          stmt.run(clients[i].priority, clients[i].id);
+          counter += 1;
+        }
+      }
+      client.priority = counter;
+      const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
+      stmt.run(client.priority, client.id);
+    }
+  } else {
+    client.priority = priority;
+    const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
+    stmt.run(client.priority, client.id);
+    for (let i=0; i<clients.length; i++) {
+      if (clients[i].status===client.status && clients[i].priority>=client.priority && clients[i].id!==client.id) {
+        clients[i].priority += 1;
+        const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
+        stmt.run(clients[i].priority, clients[i].id);
+      }
+      if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i]!==client) {
+        clients[i].priority -= 1;
+        const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
+        stmt.run(clients[i].priority, clients[i].id);
+      }
+    }
+  }
+
+  clients = db.prepare('select * from clients').all();
 
   return res.status(200).send(clients);
 });
