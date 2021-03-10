@@ -1,0 +1,279 @@
+diff --git a/clients.db b/clients.db
+index 8ba5485..b8037df 100644
+Binary files a/clients.db and b/clients.db differ
+diff --git a/package-lock.json b/package-lock.json
+index 9719cfc..bc48943 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -2115,6 +2115,15 @@
+       "integrity": "sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=",
+       "dev": true
+     },
++    "cors": {
++      "version": "2.8.5",
++      "resolved": "https://registry.npmjs.org/cors/-/cors-2.8.5.tgz",
++      "integrity": "sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==",
++      "requires": {
++        "object-assign": "^4",
++        "vary": "^1"
++      }
++    },
+     "cross-spawn": {
+       "version": "6.0.5",
+       "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-6.0.5.tgz",
+@@ -2483,7 +2492,8 @@
+         "ansi-regex": {
+           "version": "2.1.1",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "aproba": {
+           "version": "1.2.0",
+@@ -2504,12 +2514,14 @@
+         "balanced-match": {
+           "version": "1.0.0",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "brace-expansion": {
+           "version": "1.1.11",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "balanced-match": "^1.0.0",
+             "concat-map": "0.0.1"
+@@ -2524,17 +2536,20 @@
+         "code-point-at": {
+           "version": "1.1.0",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "concat-map": {
+           "version": "0.0.1",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "console-control-strings": {
+           "version": "1.1.0",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "core-util-is": {
+           "version": "1.0.2",
+@@ -2651,7 +2666,8 @@
+         "inherits": {
+           "version": "2.0.3",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "ini": {
+           "version": "1.3.5",
+@@ -2663,6 +2679,7 @@
+           "version": "1.0.0",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "number-is-nan": "^1.0.0"
+           }
+@@ -2677,6 +2694,7 @@
+           "version": "3.0.4",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "brace-expansion": "^1.1.7"
+           }
+@@ -2684,12 +2702,14 @@
+         "minimist": {
+           "version": "0.0.8",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "minipass": {
+           "version": "2.3.5",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "safe-buffer": "^5.1.2",
+             "yallist": "^3.0.0"
+@@ -2708,6 +2728,7 @@
+           "version": "0.5.1",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "minimist": "0.0.8"
+           }
+@@ -2788,7 +2809,8 @@
+         "number-is-nan": {
+           "version": "1.0.1",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "object-assign": {
+           "version": "4.1.1",
+@@ -2800,6 +2822,7 @@
+           "version": "1.4.0",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "wrappy": "1"
+           }
+@@ -2885,7 +2908,8 @@
+         "safe-buffer": {
+           "version": "5.1.2",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "safer-buffer": {
+           "version": "2.1.2",
+@@ -2921,6 +2945,7 @@
+           "version": "1.0.2",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "code-point-at": "^1.0.0",
+             "is-fullwidth-code-point": "^1.0.0",
+@@ -2940,6 +2965,7 @@
+           "version": "3.0.1",
+           "bundled": true,
+           "dev": true,
++          "optional": true,
+           "requires": {
+             "ansi-regex": "^2.0.0"
+           }
+@@ -2983,12 +3009,14 @@
+         "wrappy": {
+           "version": "1.0.2",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         },
+         "yallist": {
+           "version": "3.0.3",
+           "bundled": true,
+-          "dev": true
++          "dev": true,
++          "optional": true
+         }
+       }
+     },
+@@ -3726,8 +3754,7 @@
+     "object-assign": {
+       "version": "4.1.1",
+       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
+-      "integrity": "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=",
+-      "dev": true
++      "integrity": "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
+     },
+     "object-copy": {
+       "version": "0.1.0",
+diff --git a/package.json b/package.json
+index bb95fa3..9d3e6bd 100644
+--- a/package.json
++++ b/package.json
+@@ -23,6 +23,7 @@
+   "homepage": "https://github.com/insidesherpa/shiptivity-2#readme",
+   "dependencies": {
+     "better-sqlite3": "^5.4.0",
++    "cors": "^2.8.5",
+     "express": "^4.16.4"
+   },
+   "devDependencies": {
+diff --git a/server.js b/server.js
+index 7ba16d7..82f5877 100644
+--- a/server.js
++++ b/server.js
+@@ -2,7 +2,9 @@ import express from 'express';
+ import Database from 'better-sqlite3';
+ 
+ const app = express();
++const cors = require('cors');
+ 
++app.use(cors());
+ app.use(express.json());
+ 
+ app.get('/', (req, res) => {
+@@ -122,12 +124,58 @@ app.put('/api/v1/clients/:id', (req, res) => {
+   }
+ 
+   let { status, priority } = req.body;
++  priority = parseInt(priority);
+   let clients = db.prepare('select * from clients').all();
+   const client = clients.find(client => client.id === id);
+ 
+   /* ---------- Update code below ----------*/
++  const prevStatus = client.status;
++  const prevPriority = client.priority;
+ 
++  if (status) {
++    client.status = status;
++    const stmt = db.prepare('UPDATE clients SET status = ? WHERE id = ?');
++    stmt.run(client.status, client.id);
++  }
++
++  clients = db.prepare('select * from clients').all();
++
++  const validator = validatePriority(priority);
++  const validPrio = validator.valid
++  if (!validPrio) {
++    if (prevStatus === client.status) {
++      let counter = 0;
++      for (let i=0; i<clients.length; i++) {
++        if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i].id!==client.id) {
++          clients[i].priority -= 1;
++          const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
++          stmt.run(clients[i].priority, clients[i].id);
++          counter += 1;
++        }
++      }
++      client.priority = counter;
++      const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
++      stmt.run(client.priority, client.id);
++    }
++  } else {
++    client.priority = priority;
++    const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
++    stmt.run(client.priority, client.id);
++    for (let i=0; i<clients.length; i++) {
++      if (clients[i].status===client.status && clients[i].priority>=client.priority && clients[i].id!==client.id) {
++        clients[i].priority += 1;
++        const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
++        stmt.run(clients[i].priority, clients[i].id);
++      }
++      if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i].id!==client.idc) {
++        clients[i].priority -= 1;
++        const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
++        stmt.run(clients[i].priority, clients[i].id);
++      }
++    }
++  }
+ 
++  clients = db.prepare('select * from clients').all();
+ 
+   return res.status(200).send(clients);
+ });
