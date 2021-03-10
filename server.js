@@ -167,7 +167,7 @@ app.put('/api/v1/clients/:id', (req, res) => {
         const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
         stmt.run(clients[i].priority, clients[i].id);
       }
-      if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i]!==client) {
+      if (clients[i].status===prevStatus && clients[i].priority>=prevPriority && clients[i].id!==client.idc) {
         clients[i].priority -= 1;
         const stmt = db.prepare('UPDATE clients SET priority = ? WHERE id = ?');
         stmt.run(clients[i].priority, clients[i].id);
